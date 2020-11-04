@@ -36,16 +36,17 @@ function processJS() {
         .pipe(gulp.dest('dist/assets/js')) //destinationen for filen
         .pipe(connect.reload()); //opdatere browseren hver gang der gemmes
 }
-function processImages (){
+
+function processImages() {
     return gulp.src(["src/images/**/*", "!src/images/**/thumb.db"])
         .pipe(imagemin([
-            imagemin.mozjpeg({ quality: 25})
+            imagemin.mozjpeg({ quality: 25 })
         ]))
         .pipe(imageResize({
-            width : 500,
+            width: 50,
             //height:100;
             crop: false,
-            upscale : false
+            upscale: false
         }))
         .pipe(gulp.dest("dist/assets/media"))
         .pipe(connect.reload());
@@ -63,7 +64,7 @@ function watch() {
         processJS);
     gulp.watch("src/images/**/*", { ignoreInitial: false },
         processImages);
-  
+
 }
 
 function server() {
